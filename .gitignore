@@ -1,0 +1,97 @@
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output
+dist/
+build/
+out/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.swp
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Dependency directories
+bower_components/
+jspm_packages/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage files
+coverage/
+.nyc_output/
+*.lcov
+
+# Generated files
+*.dll
+*.exe
+*.stackdump
+*.so
+*.dylib
+*.class
+*.pyc
+*.pyo
+*.pyd
+*.prof
+*.log
+*.generated
+*.iml
+*.idb
+*.tlog
+*.cache
+*.caches/
+*.egg
+*.egg-info/
+*.com
+*.part
+
+# Packages
+*.deb
+*.tar.gz
+*.dmg
+*.pkg
+*.war
+*.jar
+*.apk
+*.ipa
+*.exe
+
+# Compressed files
+*.7z
+*.zip
+*.tar
+*.gz
+*.rar
+*.bz2
+*.xz
+
+# Other files
+*.key
+*.pem
+*.crt
