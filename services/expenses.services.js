@@ -4,7 +4,7 @@ const expenseModel = require('../models/expense.model');
 const userModel = require('../models/user.model');
 
 const getAllexpenses = async (req, res) => {
-  const expenses = await expenseModel.find().populate('user', 'name email');
+  const expenses = await expenseModel.find();
 
   res.status(200).json(expenses);
 };
@@ -16,7 +16,7 @@ const getExpensebyId = async (req, res) => {
 
   const expense = await expenseModel.findById(id);
 
-  if (!expense) res.status(400).json({ message: 'expense not found' });
+  if (!expense) return res.status(400).json({ message: 'expense not found' });
 
   res.status(200).json(expense);
 };
@@ -41,9 +41,6 @@ const createExpense = async (req, res) => {
     }
   );
 
-  const user = await userModel.findById({ _id: req.userId });
-  console.log(user);
-
   res.status(200).json(expense);
 };
 
@@ -60,7 +57,6 @@ const deleteExpense = async (req, res) => {
       .json({ message: 'you dont have permition to edit this expense' });
 
   const deletedExpense = await expenseModel.findByIdAndDelete(id);
-  console.log(deletedExpense);
   await userModel.updateOne({ _id: req.userId }, { $pull: { expenses: id } });
 
   res.json({ message: 'post deleted successfully' });
