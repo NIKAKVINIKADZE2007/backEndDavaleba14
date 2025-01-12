@@ -3,6 +3,7 @@ const conectToDb = require('./db/conectToDb');
 const authRouter = require('./auth/auth.router');
 const userRouter = require('./routes/user.router');
 const expenseRouter = require('./routes/expenses.router');
+const isAuth = require('./middlewears/isAuth');
 
 const app = express();
 conectToDb();
@@ -17,7 +18,7 @@ app.use('/auth', authRouter);
 
 app.use('/users', userRouter);
 
-app.use('/expenses', expenseRouter);
+app.use('/expenses', isAuth, expenseRouter);
 
 app.listen(3000, () => {
   console.log('Server is running on http://localhost:3000');

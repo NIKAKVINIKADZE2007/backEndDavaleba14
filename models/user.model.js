@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
   lastName: String,
   email: { type: String, lowercase: true },
   password: String,
-  posts: {
+  expenses: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'expense',
     default: [],

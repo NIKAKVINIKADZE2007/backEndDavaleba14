@@ -36,7 +36,7 @@ authRouter.post('/sign-in', async (req, res) => {
     return res.status(400).json({ message: 'email or password incorect' });
 
   const payLoad = {
-    userId: user._id,
+    id: user._id,
   };
 
   const token = jwt.sign(payLoad, process.env.JWT_SECRET, { expiresIn: '1h' });
