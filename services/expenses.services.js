@@ -52,6 +52,13 @@ const deleteExpense = async (req, res) => {
   if (!isValidObjectId(id))
     return res.status(400).json({ message: 'wrong id is provided' });
 
+  const expense = await expenseModel.findById(id);
+
+  if (expense.user[0].toString() !== req.userId)
+    return res
+      .status(400)
+      .json({ message: 'you dont have permition to edit this expense' });
+
   const deletedExpense = await expenseModel.findByIdAndDelete(id);
   console.log(deletedExpense);
   await userModel.updateOne({ _id: req.userId }, { $pull: { expenses: id } });
@@ -63,6 +70,13 @@ const editExpense = async (req, res) => {
   const { id } = req.params;
   if (!isValidObjectId(id))
     return res.status(400).json({ message: 'wrong id is provided' });
+
+  const expense = await expenseModel.findById(id);
+
+  if (expense.user[0].toString() !== req.userId)
+    return res
+      .status(400)
+      .json({ message: 'you dont have permition to edit this expense' });
 
   const updateRequest = {};
   const { category, description, amount, price } = req.body;
